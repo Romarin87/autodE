@@ -352,6 +352,23 @@ class _ConfigClass:
         # When unset, uses the default
         gfn_version = None
 
+    class DeepMD:
+        # ---------------------------------------------------------------------
+        # Parameters for DeePMD-kit machine learning potentials
+        # ---------------------------------------------------------------------
+        #
+        # Path to a trained DeePMD graph file
+        model_path = None
+        #
+        # Element type map used to translate atomic symbols to DeePMD types
+        type_map = ()
+        #
+        # Default keywords are empty because the calculator is Python-native
+        keywords = KeywordsSet()
+        #
+        # Optional DOIs associated with the DeePMD potential
+        doi_list = ()
+
     class MOPAC:
         # ---------------------------------------------------------------------
         # Parameters for mopac                             http://openmopac.net

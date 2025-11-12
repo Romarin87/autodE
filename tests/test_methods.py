@@ -4,6 +4,7 @@ from .test_opt.setup import Method
 from autode.exceptions import MethodUnavailable, NotImplementedInMethod
 from autode.wrappers.XTB import XTB
 from autode.wrappers.ORCA import ORCA
+from autode.wrappers.DeepMD import DeepMD
 import pytest
 import os
 
@@ -127,3 +128,11 @@ def test_methods_in_base_class_raise_runtime_errors():
         method = getattr(Method(), method_name)
         with pytest.raises(NotImplementedInMethod):
             method(None)
+
+
+def test_deepmd_is_unavailable_without_configuration():
+    Config.DeepMD.model_path = None
+    Config.DeepMD.type_map = ()
+
+    method = DeepMD()
+    assert method.is_available is False
